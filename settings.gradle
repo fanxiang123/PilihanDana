@@ -1,0 +1,2 @@
+rootProject.name='Pilihan Dana'
+include ':app', ':library'

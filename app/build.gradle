@@ -1,0 +1,104 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    signingConfigs {
+        release {
+            storeFile file('PilihanDana.jks')
+            storePassword 'PilihanDana'
+            keyAlias = 'PilihanDana'
+            keyPassword 'PilihanDana'
+        }
+    }
+    compileSdkVersion 28
+
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                outputFileName = "PilihanDana-" + output.baseName + ".apk"
+            }
+        }
+    }
+
+    defaultConfig {
+        applicationId "id.pilihandana.rp.com"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.release
+    }
+
+    buildTypes {
+        release {
+            lintOptions {
+                checkReleaseBuilds false
+                abortOnError false
+            }
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+            pseudoLocalesEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //BaseQuickAdapter
+    implementation project(path: ':library')
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    //侧拉抽屉
+    implementation 'com.android.support:design:28.0.0'
+
+    //修改头部栏字体颜色
+    implementation 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+
+    //json
+    implementation 'com.alibaba:fastjson:1.2.51'
+
+    //gson
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    //okhttp提供的请求日志拦截器
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    //glide
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+
+
+    // Facebook sdk
+    implementation 'com.facebook.android:facebook-login:[5,6)'
+
+    //Branch Android SDK 4.1.1+包括对Amazon Fire设备的支持。
+    implementation 'io.branch.sdk.android:library:4.+'
+    implementation 'com.google.firebase:firebase-appindexing:19.0.0'
+    implementation 'com.google.android.gms:play-services-ads-identifier:16+'
+
+}

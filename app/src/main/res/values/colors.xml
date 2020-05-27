@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="back">#000000</color>
+
+    <color name="pilihanDana">#fa8436</color>
+    <color name="pilihanDana2">#faaa36</color>
+    <color name="pilihanDana3">#F6BE6D</color>
+    <color name="white">#ffffff</color>
+    <color name="gray">#616263</color>
+    <color name="gray2">#f0f0f0</color>
+    <color name="gray3">#B8B1B1</color>
+    <color name="red">#F44336</color>
+</resources>
